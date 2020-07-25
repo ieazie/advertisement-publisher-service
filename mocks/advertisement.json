@@ -1,0 +1,137 @@
+[
+    {
+        "id": "1",
+        "name": "Handcrafted Granite Computer",
+        "description": "Electronics",
+        "startDate": "2020-01-20T07:06:50.792Z",
+        "endDate": "2020-12-01T23:41:56.046Z",
+        "type": [
+            {
+                "id": "MIlWST",
+                "name": "Politics"
+            },
+            {
+                "id": "Ma2muv",
+                "name": "Education"
+            }
+        ],
+        "channel": [
+            {
+                "id": "mtLaAi",
+                "name": "Google"
+            },
+            {
+                "id": "OWpStu",
+                "name": "Instagram"
+            }
+        ]
+    },
+    {
+        "id": "2",
+        "name": "Awesome Steel Computer",
+        "description": "Music",
+        "startDate": "2019-09-17T01:08:48.106Z",
+        "endDate": "2021-01-20T18:25:17.045Z",
+        "type": [
+            {
+                "id": "MIlWST",
+                "name": "Politics"
+            },
+            {
+                "id": "Ma2muv",
+                "name": "Education"
+            }
+        ],
+        "channel": [
+            {
+                "id": "OWpStu",
+                "name": "Instagram"
+            },
+            {
+                "id": "EyUwHg",
+                "name": "Facebook"
+            }
+        ]
+    },
+    {
+        "id": "3",
+        "name": "Sleek Frozen Ball",
+        "description": "Movies",
+        "startDate": "2020-01-14T03:25:23.488Z",
+        "endDate": "2021-02-19T10:35:32.636Z",
+        "type": [
+            {
+                "id": "GkSb5B",
+                "name": "Software"
+            },
+            {
+                "id": "MIlWST",
+                "name": "Politics"
+            }
+        ],
+        "channel": [
+            {
+                "id": "EyUwHg",
+                "name": "Facebook"
+            },
+            {
+                "id": "p4mXZ4",
+                "name": "LinkedIn"
+            }
+        ]
+    },
+    {
+        "id": "4",
+        "name": "Licensed Granite Sausages",
+        "description": "Jewelery",
+        "startDate": "2019-09-05T17:45:23.985Z",
+        "endDate": "2020-10-21T11:44:14.531Z",
+        "type": [
+            {
+                "id": "GkSb5B",
+                "name": "Software"
+            },
+            {
+                "id": "MIlWST",
+                "name": "Politics"
+            }
+        ],
+        "channel": [
+            {
+                "id": "EyUwHg",
+                "name": "Facebook"
+            },
+            {
+                "id": "p4mXZ4",
+                "name": "LinkedIn"
+            }
+        ]
+    },
+    {
+        "id": "5",
+        "name": "Licensed Cotton Bike",
+        "description": "Books",
+        "startDate": "2019-10-14T11:48:28.622Z",
+        "endDate": "2020-11-29T20:44:36.499Z",
+        "type": [
+            {
+                "id": "MIlWST",
+                "name": "Politics"
+            },
+            {
+                "id": "Ma2muv",
+                "name": "Education"
+            }
+        ],
+        "channel": [
+            {
+                "id": "mtLaAi",
+                "name": "Google"
+            },
+            {
+                "id": "OWpStu",
+                "name": "Instagram"
+            }
+        ]
+    }
+]
