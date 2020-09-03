@@ -1,3 +1,5 @@
 /.idea/advertisement-publisher-service.iml
 /.idea/modules.xml
 /.idea/vcs.xml
+*.xml
+.idea/workspace.xml
