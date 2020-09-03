@@ -1,7 +1,7 @@
 import Logger from "https://deno.land/x/logger@v1.0.0/logger.ts";
 
 import Service from "./base/service.ts";
-import Advertisement from "../models/advertisement-model.ts";
+import Advertisement from '../models/advertisement-model.ts';
 import { IAdvertisement } from "../interfaces/Advertisement.ts";
 import AdvertisementRepository from "../repositories/advertisement-repository.ts";
 
@@ -13,29 +13,35 @@ class AdvertisementService extends Service {
     this.logger = logger;
   }
 
-  fetchAdvertisments() {
-    const json = JSON.parse(
+  fetchAdvertisements = () => {
+    let json: any;
+    json = JSON.parse(
       Deno.readTextFileSync("../mocks/advertisement.json"),
     );
     return Advertisement.fromJSON(json);
-    // return this.buildAdvertisementList();
-  }
+    /*
+       return this.buildAdvertisementList();
+      */
+  };
 
-  fetchAdvertisement(id: string) {
-    return this.buildAdvertisementList().filter(
+  fetchAdvertisement = (id: string) =>
+    AdvertisementService.buildAdvertisementList().filter(
       (advertisement) => advertisement.id === id,
     );
-  }
 
-  createAdvertisement(advertisement: IAdvertisement) {}
+  createAdvertisement = (advertisement: IAdvertisement) => {};
 
-  updateAdvertisement(advertisement: IAdvertisement) {}
+  updateAdvertisement = (advertisement: IAdvertisement) => {};
 
-  publishAdvertisement(startDate: Date, endDate: Date, isActive: boolean) {
+  publishAdvertisement = (
+    startDate: Date,
+    endDate: Date,
+    isActive: boolean,
+  ) => {
     this.logger.info("First Publication achieved");
-  }
+  };
 
-  private buildAdvertisementList() {
+  private static buildAdvertisementList() {
     const advertisement = AdvertisementRepository.makeAdvertisementRepository()
       .advertisementList.map(
         (Advertisement) => ({

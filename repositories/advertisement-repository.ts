@@ -19,7 +19,7 @@ class AdvertisementRepository {
   }
 
   static generateFakeAdvertisementData(): Array<IAdvertisement> {
-    let advertList: Array<IAdvertisement> = new Array();
+    let advertList: Array<IAdvertisement> = [];
     for (let i = 0; i < 5; i++) {
       const id = i + 1;
       const advert = new Advertisement(

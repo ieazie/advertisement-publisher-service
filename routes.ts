@@ -5,7 +5,7 @@ const router = new Router();
 
 const logger = new Logger();
 const adService = new AdvertisementService(logger);
-console.log(adService.fetchAdvertisments());
+console.log(adService.fetchAdvertisements());
 
 const helloworld = ({ response }: { response: any }) => {
   response.body = {

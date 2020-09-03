@@ -9,7 +9,8 @@ class TypeRepository {
     this.typeList = typeList;
   }
   static makeTypeRepository() {
-    const typeRepository = new TypeRepository(this.generateTypeData());
+    let typeRepository: TypeRepository;
+    typeRepository = new TypeRepository(this.generateTypeData());
     return typeRepository;
   }
 

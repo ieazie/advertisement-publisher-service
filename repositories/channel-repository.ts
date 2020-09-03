@@ -9,12 +9,11 @@ class ChannelRepository {
     this.channelList = channelList;
   }
   static makeChannelRepository() {
-    const channelRepository = new ChannelRepository(this.generateChannelData());
-    return channelRepository;
+    return new ChannelRepository(this.generateChannelData());
   }
 
   static generateChannelData(): Array<IChannel> {
-    let channelList: Array<IChannel> = new Array();
+    let channelList: Array<IChannel> = [];
     channels.map((channel) => {
       channelList.push(channel);
     });

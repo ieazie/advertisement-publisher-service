@@ -1,7 +1,7 @@
 import {
   IAdvertisement,
-  IType,
   IChannel,
+  IType,
 } from "../interfaces/Advertisement.ts";
 
 class Advertisement implements IAdvertisement {
@@ -42,7 +42,7 @@ class Advertisement implements IAdvertisement {
       channel,
     } = serverJson;
 
-    const advertisement = new Advertisement(
+    return new Advertisement(
       id,
       name,
       description,
@@ -51,8 +51,6 @@ class Advertisement implements IAdvertisement {
       type,
       channel,
     );
-
-    return advertisement;
   };
 
   toJSON(): IAdvertisement {
