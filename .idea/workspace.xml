@@ -20,11 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f4d8e54-2885-4232-ad88-a63abce8f9e6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/advertisement-model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/models/advertisement-model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repositories/advertisement-repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/advertisement-repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repositories/channel-repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/channel-repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repositories/type-repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/type-repository.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/routes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/advertisement-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/advertisement-service.ts" afterDir="false" />
     </list>
@@ -56,6 +51,19 @@
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RunManager">
+    <configuration name="deno_build" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="deno_build" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Makefile.deno_build" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -67,7 +75,7 @@
       <workItem from="1597182428468" duration="5269000" />
       <workItem from="1598108218334" duration="300000" />
       <workItem from="1598304546790" duration="1092000" />
-      <workItem from="1598741107952" duration="1233000" />
+      <workItem from="1598741107952" duration="1394000" />
     </task>
     <servers />
   </component>
