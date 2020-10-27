@@ -20,24 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f4d8e54-2885-4232-ad88-a63abce8f9e6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mocks/channels.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mocks/types.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/util/json-helper.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/advertisement-controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/advertisement-controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deps.ts" beforeDir="false" afterPath="$PROJECT_DIR$/deps.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interfaces/Advertisement.ts" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/Advertisement.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mocks/advertisement.json" beforeDir="false" afterPath="$PROJECT_DIR$/mocks/advertisements.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/advertisement-model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/models/advertisement-model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repositories/advertisement-repository.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/repositories/channel-repository.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/repositories/type-repository.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/advertisement-service.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/advertisement-service.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/advertisement-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/advertisement-service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +106,7 @@
       <workItem from="1598741107952" duration="32264000" />
       <workItem from="1600200090975" duration="411000" />
       <workItem from="1600205166153" duration="23027000" />
-      <workItem from="1603007639122" duration="18978000" />
+      <workItem from="1603007639122" duration="19207000" />
     </task>
     <servers />
   </component>
