@@ -1,18 +1,15 @@
-import { Logger, Router } from "./deps.ts";
-import AdvertisementService from "./services/advertisement-service.ts";
+import {Router} from './deps';
+import AdvertisementController from "./controllers/advertisement-controller.ts";
 
 const router = new Router();
 
-const logger = new Logger();
-const adService = new AdvertisementService(logger);
+const controller = AdvertisementController.makeAdvertisementController();
 
-const helloworld = ({ response }: { response: any }) => {
-  response.body = {
-    success: true,
-    msg: "Hello World",
-  };
-};
-
-router.get("/api/v1/hello", helloworld);
+router.get("/api/v1/advertisements", controller.getAdvertisements())
+      .get("/api/v1/advertisements/:id", controller.getAdvertisement())
+      .post("/api/v1/advertisements", controller.addAdvertisement())
+      .put("/api/vi/advertisements/:id", controller.updateAdvertisement())
+      .put("/api/v1/advertisements/publish", controller.publishAdvertisement())
+      .delete("/api/v1/advertisements/:id", controller.deleteAdvertisement())
 
 export default router;

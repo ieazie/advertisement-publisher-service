@@ -8,8 +8,9 @@ class Advertisement implements IAdvertisement {
   id: string;
   name: string;
   description: string;
-  startDate: Date;
-  endDate: Date;
+  startDate: string;
+  endDate: string;
+  isActive: boolean;
   type: Array<IType>;
   channel: Array<IChannel>;
 
@@ -17,8 +18,9 @@ class Advertisement implements IAdvertisement {
     id: string,
     name: string,
     description: string,
-    startDate: Date,
-    endDate: Date,
+    startDate: string,
+    endDate: string,
+    isActive: boolean,
     type: Array<IType>,
     channel: Array<IChannel>,
   ) {
@@ -27,31 +29,10 @@ class Advertisement implements IAdvertisement {
     this.description = description;
     this.startDate = startDate;
     this.endDate = endDate;
+    this.isActive = isActive;
     this.type = type;
     this.channel = channel;
   }
-
-  static makeAdvertisement = (serverJson: IAdvertisement) => {
-    const {
-      id,
-      name,
-      description,
-      startDate,
-      endDate,
-      type,
-      channel,
-    } = serverJson;
-
-    return new Advertisement(
-      id,
-      name,
-      description,
-      startDate,
-      endDate,
-      type,
-      channel,
-    );
-  };
 
   toJSON(): IAdvertisement {
     return Object.assign({}, this);
