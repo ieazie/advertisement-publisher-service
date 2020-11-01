@@ -1,119 +1,128 @@
-import AdvertisementService from '../services/advertisement-service.ts'
-import { IAdvertisement } from "../interfaces/Advertisement.ts";
+import AdvertisementService from "../services/advertisement-service.ts";
 
-class AdvertisementController {
-    AdvertisementService: AdvertisementService;
+// @desc    Fetch all advertisements
+// @route   GET /api/v1/advertisements
+export const getAdvertisements = ({ response }: { response: any }) => {
+  response.body = {
+    data: AdvertisementService.instance().fetchAdvertisements(),
+  };
+};
 
-    constructor(AdvertisementService: AdvertisementService) {
-        this.AdvertisementService = AdvertisementService;
-    }
+// @desc    Fetch single advertisement
+// @route   GET /api/v1/advertisement/:id
+export const getAdvertisement = async (
+  { params, response }: { params: { id: string }; response: any },
+) => {
+  const advertisement = AdvertisementService.instance().fetchAdvertisement(
+    params.id,
+  );
 
-    static makeAdvertisementController = () => new AdvertisementController();
+  if (advertisement === null) {
+    response.status = 400;
+    response.body = { msg: `Advertisement with id: ${params.id} not found` };
+    return;
+  }
 
-    // @desc    Fetch all advertisements
-    // @route   GET /api/v1/advertisements
-    public getAdvertisements = ({response}: { response: any }) => {
-        response.body = {
-            success: true,
-            data: this.AdvertisementService.fetchAdvertisements()
-        }
-    }
+  response.status = 200;
+  response.body = { data: advertisement };
+};
 
-    // @desc    Fetch single advertisement
-    // @route   GET /api/v1/advertisements/:id
-    getAdvertisement = ({params, response}: { params: { id: string }, response: any }) => {
-        const advertisement: IAdvertisement | undefined = this.AdvertisementService.fetchAdvertisement(id);
+// @desc    Add  advertisement
+// @route   POST /api/v1/advertisements
+export const addAdvertisement = async (
+  { request, response }: { request: any; response: any },
+) => {
+  if (!request.body()) {
+    response.status = 400;
+    response.body = {
+      success: false,
+      msg: "The request must have a body",
+    };
+    return;
+  }
 
-        if(advertisement){
-            response.status = 200
-            response.body = {
-                success: true,
-                data: advertisement
-            }
-        } else {
-                response.status = 404
-                response.body = {
-                    success: false,
-                    msg: `Advertisement with id: ${id} not found`
-                }
-            }
-        }
+  const data = await request.body().value;
 
-    // @desc    Add  advertisement
-    // @route   POST /api/v1/advertisements
-    addAdvertisement = async ({ request, response }: { request: any, response: any }) => {
-         const data = await request.body();
+  const advertisement = AdvertisementService.instance().createAdvertisement(
+    data,
+  );
+  response.status = 200;
+  response.body = {
+    success: true,
+    data: advertisement,
+  };
+};
 
-         if(!data){
-             response.status = 400
-             response.body = {
-                 success: false,
-                 msg: 'No data'
-             }
-         }
+// @desc    Update advertisement
+// @route   PUT /api/v1/advertisements/:id
+export const updateAdvertisement = async (
+  { params, request, response }: {
+    params: { id: string };
+    request: any;
+    response: any;
+  },
+) => {
+  const advertisement = AdvertisementService.instance().fetchAdvertisement(
+    params.id,
+  );
 
-         const advertisement : IAdvertisement = this.AdvertisementService.createAdvertisement(data);
-         response.status = 201
-         response.body = {
-            success: true,
-            data: advertisement
-         }
-    }
+  if (!advertisement) {
+    response.status = 404;
+    response.body = {
+      success: false,
+      msg: `Advertisement with id: ${params.id} not found`,
+    };
+  }
 
-    // @desc    Update advertisement
-    // @route   PUT /api/v1/advertisements/:id
-    updateAdvertisement = async({ params, request, response }: { params: { id: string }, request: any, response: any }) => {
-        const advertisement: IAdvertisement | undefined = this.AdvertisementService.fetchAdvertisement(id);
+  const data = request.body().value;
+  const updatedAdvertisement = AdvertisementService.instance()
+    .updateAdvertisement(
+      data,
+    );
+  response.status = 200;
+  response.body = {
+    success: true,
+    data: updatedAdvertisement,
+  };
+};
 
-        if(!advertisement) {
-            response.status = 404
-            response.body = {
-                success: false,
-                msg: `Advertisement with id: ${id} not found`
-            }
-        }
+// @desc    Publish advertisement
+// @route   PUT /api/v1/advertisements/publish
+export const publishAdvertisement = async (
+  { request, response }: { request: any; response: any },
+) => {
+  const data = await request.body().value;
 
-        const data = request.body();
-        const updatedAdvertisement = this.AdvertisementService.updateAdvertisement(data);
-        response.status = 200
-        response.body = {
-            success: true,
-            data: updatedAdvertisement
-        }
+  if (!data) {
+    response.status = 400;
+    response.body = {
+      success: false,
+      msg: "No data",
+    };
+  }
 
-    }
+  const { id, startDate, endDate, isActive } = data;
+  const advertisement = AdvertisementService.instance().publishAdvertisement(
+    id,
+    startDate,
+    endDate,
+    isActive,
+  );
+  response.status = 200;
+  response.body = {
+    success: isActive,
+    data: advertisement,
+  };
+};
 
-    // @desc    Publish advertisement
-    // @route   PUT /api/v1/advertisements/publish
-    publishAdvertisement = async ({ request, response }: { request: any, response: any }) => {
-        const data = await request.body();
-
-        if(!data){
-            response.status = 400
-            response.body = {
-                success: false,
-                msg: 'No data'
-            }
-        }
-
-        const { id, startDate, endDate, isActive} = data;
-        const advertisement = this.AdvertisementService.publishAdvertisement(id,startDate,endDate);
-        response.status = 200
-        response.body = {
-            success: isActive,
-            data: advertisement
-        }
-    }
-
-    // @desc    Delete advertisement
-    // @route   DELETE /api/v1/advertisements/:id
-    deleteAdvertisement = ({ params, response }: { params: { id: string }, response: any }) => {
-        this.AdvertisementService.deleteAdvertisement(id);
-        response.body = {
-            success: true,
-            msg: 'Advertisement removed'
-        }
-    }
-}
-
-export default AdvertisementController;
+// @desc    Delete advertisement
+// @route   DELETE /api/v1/advertisements/:id
+export const deleteAdvertisement = (
+  { params, response }: { params: { id: string }; response: any },
+) => {
+  AdvertisementService.instance().deleteAdvertisement(params.id);
+  response.body = {
+    success: true,
+    msg: "Advertisement removed",
+  };
+};

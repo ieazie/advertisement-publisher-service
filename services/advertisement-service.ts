@@ -1,4 +1,4 @@
-import {Logger} from "../deps.ts";
+import { Logger } from "../deps.ts";
 
 import Service from "./base/service.ts";
 import Advertisement from "../models/advertisement-model.ts";
@@ -6,7 +6,7 @@ import {
   IAdvertisement,
   IChannel,
   IType,
-} from "../interfaces/Advertisement.ts";
+} from "../interface/Advertisement.ts";
 import { readJSON } from "../util/json-helper.ts";
 
 class AdvertisementService extends Service {
@@ -21,37 +21,46 @@ class AdvertisementService extends Service {
     this.loadData();
   }
 
+  static instance = () => new AdvertisementService(new Logger());
+
   // load json data from file
   loadData = () => {
-    const advertiseJSON = readJSON("./mocks/advertisements.json");
+    const advertiseJSON = readJSON("./data/advertisements.json");
     const adverts = Advertisement.fromJSON(advertiseJSON);
     this.advertisements = Object.values(adverts);
-    this.channels = readJSON("./mocks/channels.json");
-    this.types = readJSON("./mocks/types.json");
+    this.channels = readJSON("./data/channels.json");
+    this.types = readJSON("./data/types.json");
   };
 
-  activeAdvertisements  = (): IAdvertisement[] =>  {
-    return this.advertisements.filter(((advertisement) => advertisement.isActive === true));
-  }
+  // activeAdvertisements = (): IAdvertisement => {
+  //   return this.advertisements.filter(
+  //     ((advertisement) => advertisement.isActive === true),
+  //   );
+  // };
 
   // returns all adverts active or not
   fetchAdvertisements = () => {
     return this.advertisements;
   };
 
-  fetchAdvertisement = (id: string) =>
-    this.activeAdvertisements().filter((advertisement) => advertisement.id === id);
+  fetchAdvertisement = (id: string) => {
+    const result = this.advertisements.filter((advertisement) =>
+      advertisement.id === id
+    );
+    return result;
+  };
 
   createAdvertisement = (advertisement: IAdvertisement) => {
     const newAdvertisement = Object.values(advertisement);
     const [first] = newAdvertisement;
     this.advertisements.push(first);
+    // console.log(this.advertisements);
     return this.advertisements;
   };
 
   updateAdvertisement = (advertisement: IAdvertisement) => {
-    const existingAdvertisement = this.activeAdvertisements()
-        .filter((advert) => advert.id === advertisement.id);
+    const existingAdvertisement = this.advertisements
+      .filter((advert) => advert.id === advertisement.id);
     if (existingAdvertisement) {
       const updatedAdvertisement: {
         name?: string;
@@ -71,15 +80,17 @@ class AdvertisementService extends Service {
   };
 
   deleteAdvertisement = (id: string) => {
-    this.advertisements = this.advertisements.filter((advert) => advert.id !== id);
+    this.advertisements = this.advertisements.filter((advert) =>
+      advert.id !== id
+    );
     return this.advertisements;
-  }
+  };
 
   publishAdvertisement = (
     id: string,
     startDate: string,
     endDate: string,
-    isActive: boolean
+    isActive: boolean,
   ) => {
     if (this.validateDates(startDate, endDate)) {
       const publishData: IAdvertisement = {

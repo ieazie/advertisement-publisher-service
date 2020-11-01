@@ -2,7 +2,7 @@ import {
   IAdvertisement,
   IChannel,
   IType,
-} from "../interfaces/Advertisement.ts";
+} from "../interface/Advertisement.ts";
 
 class Advertisement implements IAdvertisement {
   id: string;

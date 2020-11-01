@@ -3,7 +3,7 @@ import Service from "./base/service.ts";
 import AdvertisementService from "./advertisement-service.ts";
 import { readJSON } from "../util/json-helper.ts";
 import Advertisement from "../models/advertisement-model.ts";
-import { IAdvertisement } from "../interfaces/Advertisement.ts";
+import { IAdvertisement } from "../interface/Advertisement.ts";
 
 Deno.test("should be an instance of Service", () => {
   const advertisementService = makeAdvertisementService();
@@ -76,7 +76,7 @@ Deno.test('the method "publishAdvertisement"', () => {
 
 const makeAdvertisementService = () => new AdvertisementService(new Logger());
 
-const makeAdvertisementData = () => readJSON("./mocks/advertisements.json");
+const makeAdvertisementData = () => readJSON("./data/advertisements.json");
 
 const makeNewAdvertisementData = () =>
   `[
