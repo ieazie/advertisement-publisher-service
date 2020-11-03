@@ -1,6 +1,6 @@
 import { Application } from "./deps.ts";
 import router from "./routes.ts";
-import _404 from "./middleware/404.ts";
+import fourZeroFour from "./middleware/404.ts";
 import errorHandler from "./middleware/error-handler.ts";
 
 const env = Deno.env.toObject();
@@ -11,7 +11,7 @@ const app = new Application();
 app.use(errorHandler);
 app.use(router.routes());
 app.use(router.allowedMethods());
-app.use(_404);
+app.use(fourZeroFour);
 
 console.log(`Server running on port ${PORT}`);
 

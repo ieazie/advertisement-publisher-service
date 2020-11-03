@@ -120,9 +120,12 @@ export const publishAdvertisement = async (
 export const deleteAdvertisement = (
   { params, response }: { params: { id: string }; response: any },
 ) => {
-  AdvertisementService.instance().deleteAdvertisement(params.id);
+  const advertisement = AdvertisementService.instance().deleteAdvertisement(
+    params.id,
+  );
   response.body = {
     success: true,
     msg: "Advertisement removed",
+    data: advertisement,
   };
 };
