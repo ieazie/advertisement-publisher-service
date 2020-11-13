@@ -44,7 +44,7 @@ class AdvertisementService extends Service {
   };
 
   fetchAdvertisement = (id: string) => {
-    const result = this.advertisements.filter((advertisement) =>
+    const result = this.advertisements.find((advertisement) =>
       advertisement.id === id
     );
     return result;
@@ -58,25 +58,27 @@ class AdvertisementService extends Service {
     return this.advertisements;
   };
 
-  updateAdvertisement = (advertisement: IAdvertisement) => {
+  updateAdvertisement = (advertisement: IAdvertisement, id: string) => {
     const existingAdvertisement = this.advertisements
-      .filter((advert) => advert.id === advertisement.id);
-    if (existingAdvertisement) {
-      const updatedAdvertisement: {
-        name?: string;
-        description?: string;
-        startDate?: string;
-        endDate?: string;
-        type?: Array<IType>;
-        channel?: Array<IChannel>;
-      } = advertisement;
-      this.advertisements = this.advertisements.map((advert) =>
-        advert.id === advertisement.id
-          ? { ...advert, ...updatedAdvertisement }
-          : advert
-      );
-      return this.advertisements;
+      .find((advert) => advert.id === id);
+
+    if (!existingAdvertisement) {
+      return false;
     }
+
+    const updatedAdvertisement: {
+      name?: string;
+      description?: string;
+      startDate?: string;
+      endDate?: string;
+      type?: Array<IType>;
+      channel?: Array<IChannel>;
+    } = advertisement;
+    this.advertisements = this.advertisements.map((advert) =>
+      advert.id === id ? { ...advert, ...updatedAdvertisement } : advert
+    );
+
+    return true;
   };
 
   deleteAdvertisement = (id: string) => {
@@ -99,7 +101,7 @@ class AdvertisementService extends Service {
         endDate,
         isActive,
       };
-      return this.updateAdvertisement(publishData);
+      return this.updateAdvertisement(publishData, id);
     }
   };
 

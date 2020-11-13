@@ -72,17 +72,29 @@ export const updateAdvertisement = async (
       success: false,
       msg: `Advertisement with id: ${params.id} not found`,
     };
+    return;
   }
 
-  const data = request.body().value;
+  const data = await request.body().value;
   const updatedAdvertisement = AdvertisementService.instance()
     .updateAdvertisement(
       data,
+      params.id,
     );
-  response.status = 200;
+
+  if (updatedAdvertisement) {
+    response.status = 200;
+    response.body = {
+      success: true,
+      msg: `Update for advert with id ${params.id} was successful`,
+    };
+    return;
+  }
+
+  response.status = 500;
   response.body = {
     success: true,
-    data: updatedAdvertisement,
+    msg: `Update for advertisement with id ${params.id} failed`,
   };
 };
 
@@ -99,6 +111,7 @@ export const publishAdvertisement = async (
       success: false,
       msg: "No data",
     };
+    return;
   }
 
   const { id, startDate, endDate, isActive } = data;

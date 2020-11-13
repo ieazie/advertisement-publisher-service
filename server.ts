@@ -8,10 +8,11 @@ const PORT = env.PORT || 3000;
 const HOST = env.HOST || "localhost";
 
 const app = new Application();
+
 app.use(errorHandler);
 app.use(router.routes());
-app.use(router.allowedMethods());
 app.use(fourZeroFour);
+app.use(router.allowedMethods());
 
 console.log(`Server running on port ${PORT}`);
 
