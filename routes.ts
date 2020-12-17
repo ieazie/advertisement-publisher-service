@@ -1,11 +1,11 @@
 import { Router } from "./deps.ts";
 import {
-  getAdvertisements,
-  getAdvertisement,
   addAdvertisement,
-  updateAdvertisement,
-  publishAdvertisement,
   deleteAdvertisement,
+  getAdvertisement,
+  getAdvertisements,
+  publishAdvertisement,
+  updateAdvertisement,
 } from "./controllers/advertisement-controller.ts";
 
 const router = new Router();

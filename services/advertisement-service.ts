@@ -1,27 +1,15 @@
-import { Logger } from "../deps.ts";
-
-import Service from "./base/service.ts";
 import Advertisement from "../models/advertisement-model.ts";
-import {
-  IAdvertisement,
-  IChannel,
-  IType,
-} from "../interface/Advertisement.ts";
+import { IAdvertisement, IChannel, IType } from "../interface/Advertisement.ts";
 import { readJSON } from "../util/json-helper.ts";
 
-class AdvertisementService extends Service {
-  logger: Logger;
+class AdvertisementService {
   advertisements: Array<IAdvertisement> = [];
   channels: Array<IChannel> = [];
   types: Array<IType> = [];
 
-  constructor(logger: Logger) {
-    super(logger);
-    this.logger = logger;
+  constructor() {
     this.loadData();
   }
-
-  static instance = () => new AdvertisementService(new Logger());
 
   // load json data from file
   loadData = () => {
@@ -54,7 +42,6 @@ class AdvertisementService extends Service {
     const newAdvertisement = Object.values(advertisement);
     const [first] = newAdvertisement;
     this.advertisements.push(first);
-    // console.log(this.advertisements);
     return this.advertisements;
   };
 
@@ -121,7 +108,6 @@ class AdvertisementService extends Service {
     }
 
     if (startDateLessThanToday) {
-      this.logger.error("Start date must be greater than today");
       throw new Error("Start date must be greater than today");
     }
 
@@ -129,4 +115,4 @@ class AdvertisementService extends Service {
   };
 }
 
-export default AdvertisementService;
+export default new AdvertisementService();

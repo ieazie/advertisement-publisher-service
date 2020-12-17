@@ -1,8 +1,4 @@
-import {
-  IAdvertisement,
-  IChannel,
-  IType,
-} from "../interface/Advertisement.ts";
+import { IAdvertisement, IChannel, IType } from "../interface/Advertisement.ts";
 
 class Advertisement implements IAdvertisement {
   id: string;

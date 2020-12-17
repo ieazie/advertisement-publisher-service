@@ -4,7 +4,7 @@ import AdvertisementService from "../services/advertisement-service.ts";
 // @route   GET /api/v1/advertisements
 export const getAdvertisements = ({ response }: { response: any }) => {
   response.body = {
-    data: AdvertisementService.instance().fetchAdvertisements(),
+    data: AdvertisementService.fetchAdvertisements(),
   };
 };
 
@@ -13,7 +13,7 @@ export const getAdvertisements = ({ response }: { response: any }) => {
 export const getAdvertisement = async (
   { params, response }: { params: { id: string }; response: any },
 ) => {
-  const advertisement = AdvertisementService.instance().fetchAdvertisement(
+  const advertisement = AdvertisementService.fetchAdvertisement(
     params.id,
   );
 
@@ -43,7 +43,7 @@ export const addAdvertisement = async (
 
   const data = await request.body().value;
 
-  const advertisement = AdvertisementService.instance().createAdvertisement(
+  const advertisement = AdvertisementService.createAdvertisement(
     data,
   );
   response.status = 200;
@@ -62,7 +62,7 @@ export const updateAdvertisement = async (
     response: any;
   },
 ) => {
-  const advertisement = AdvertisementService.instance().fetchAdvertisement(
+  const advertisement = AdvertisementService.fetchAdvertisement(
     params.id,
   );
 
@@ -76,8 +76,7 @@ export const updateAdvertisement = async (
   }
 
   const data = await request.body().value;
-  const updatedAdvertisement = AdvertisementService.instance()
-    .updateAdvertisement(
+  const updatedAdvertisement = AdvertisementService.updateAdvertisement(
       data,
       params.id,
     );
@@ -115,7 +114,7 @@ export const publishAdvertisement = async (
   }
 
   const { id, startDate, endDate, isActive } = data;
-  const advertisement = AdvertisementService.instance().publishAdvertisement(
+  const advertisement = AdvertisementService.publishAdvertisement(
     id,
     startDate,
     endDate,
@@ -133,7 +132,7 @@ export const publishAdvertisement = async (
 export const deleteAdvertisement = (
   { params, response }: { params: { id: string }; response: any },
 ) => {
-  const advertisement = AdvertisementService.instance().deleteAdvertisement(
+  const advertisement = AdvertisementService.deleteAdvertisement(
     params.id,
   );
   response.body = {

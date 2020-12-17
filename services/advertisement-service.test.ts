@@ -1,14 +1,8 @@
 import { expect, Logger } from "../deps.ts";
-import Service from "./base/service.ts";
 import AdvertisementService from "./advertisement-service.ts";
 import { readJSON } from "../util/json-helper.ts";
 import Advertisement from "../models/advertisement-model.ts";
 import { IAdvertisement } from "../interface/Advertisement.ts";
-
-Deno.test("should be an instance of Service", () => {
-  const advertisementService = makeAdvertisementService();
-  expect(advertisementService instanceof Service).toBe(true);
-});
 
 Deno.test('the method "fetchAdvertisements"', () => {
   const advertisementService = makeAdvertisementService();
@@ -40,7 +34,7 @@ Deno.test('the method "updateAdvertisement"', () => {
     id: "1",
     name: "Apple iPhone 10",
   };
-  expect(advertisementService.updateAdvertisement(data)).toEqual(
+  expect(advertisementService.updateAdvertisement(data, data.id)).toEqual(
     advertisementService.advertisements,
   );
 });
