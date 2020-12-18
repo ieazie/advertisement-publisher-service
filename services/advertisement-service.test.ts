@@ -1,74 +1,60 @@
-import { expect, Logger } from "../deps.ts";
+import { expect } from "../deps.ts";
 import AdvertisementService from "./advertisement-service.ts";
 import { readJSON } from "../util/json-helper.ts";
 import Advertisement from "../models/advertisement-model.ts";
 import { IAdvertisement } from "../interface/Advertisement.ts";
 
 Deno.test('the method "fetchAdvertisements"', () => {
-  const advertisementService = makeAdvertisementService();
-  expect(advertisementService.fetchAdvertisements()).toEqual(
+  expect(AdvertisementService.fetchAdvertisements()).toEqual(
     makeAdvertisementData(),
   );
 });
 
 Deno.test('the method "fetchAdvertisement"', () => {
-  const advertisementService = makeAdvertisementService();
   const adId = "1";
   const result = makeAdvertisementData().filter((
     advertisements: { id: string },
   ) => advertisements.id === adId);
-  expect(advertisementService.fetchAdvertisement(adId)).toEqual(result);
+  expect(AdvertisementService.fetchAdvertisement(adId)).toEqual(result);
 });
 
 Deno.test('the method "createAdvertisement"', () => {
-  const advertisementService = makeAdvertisementService();
   const newAdvert = Advertisement.fromJSON(makeNewAdvertisementData());
-  expect(advertisementService.createAdvertisement(newAdvert)).toEqual(
-    advertisementService.advertisements,
+  expect(AdvertisementService.createAdvertisement(newAdvert)).toEqual(
+      AdvertisementService.advertisements
   );
 });
 
 Deno.test('the method "updateAdvertisement"', () => {
-  const advertisementService = makeAdvertisementService();
   const data: IAdvertisement = {
     id: "1",
     name: "Apple iPhone 10",
   };
-  expect(advertisementService.updateAdvertisement(data, data.id)).toEqual(
-    advertisementService.advertisements,
+  expect(AdvertisementService.updateAdvertisement(data, data.id)).toEqual(
+      AdvertisementService.advertisements,
   );
 });
 
 Deno.test('the method "publishAdvertisement"', () => {
-  const advertisementService = makeAdvertisementService();
   const id = "1";
   const startDate = "2020-01-20T07:06:50.792Z";
   const isActive = true;
 
   const sameDates = () => {
     const endDate = "2020-01-20T07:06:50.792Z";
-    advertisementService.publishAdvertisement(id, startDate, endDate, isActive);
+    AdvertisementService.publishAdvertisement(id, startDate, endDate, isActive);
   };
   expect(sameDates).toThrow("Start and End dates cannot be same");
 
   const startDateGreaterThanEndDate = () => {
     const endDate = "2020-01-22T23:41:56.046Z";
-    advertisementService.publishAdvertisement(id, startDate, endDate, isActive);
+    AdvertisementService.publishAdvertisement(id, startDate, endDate, isActive);
   };
   expect(startDateGreaterThanEndDate).toThrow(
     "Start date must be greater than end date",
   );
-
-  // const startDateLessThanToday = () => {
-  //   const endDate = "2020-01-22T23:41:56.046Z";
-  //   advertisementService.publishAdvertisement(id, startDate, endDate, isActive);
-  // };
-  // expect(startDateLessThanToday).toThrow(
-  //   "Start date must be greater than today",
-  // );
+  
 });
-
-const makeAdvertisementService = () => new AdvertisementService(new Logger());
 
 const makeAdvertisementData = () => readJSON("./data/advertisements.json");
 
