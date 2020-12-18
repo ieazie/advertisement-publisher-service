@@ -20,12 +20,6 @@ class AdvertisementService {
     this.types = readJSON("./data/types.json");
   };
 
-  // activeAdvertisements = (): IAdvertisement => {
-  //   return this.advertisements.filter(
-  //     ((advertisement) => advertisement.isActive === true),
-  //   );
-  // };
-
   // returns all adverts active or not
   fetchAdvertisements = () => {
     return this.advertisements;
