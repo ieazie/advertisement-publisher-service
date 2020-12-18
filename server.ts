@@ -1,4 +1,4 @@
-import { Application } from "./deps.ts";
+import {Application} from "./deps.ts";
 import router from "./routes.ts";
 import fourZeroFour from "./middleware/404.ts";
 import errorHandler from "./middleware/error-handler.ts";
@@ -16,4 +16,4 @@ app.use(router.allowedMethods());
 
 console.log(`Server running on port ${PORT}`);
 
-await app.listen(`${HOST}:${PORT}`);
+app.listen(`${HOST}:${PORT}`);

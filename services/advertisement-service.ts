@@ -40,13 +40,6 @@ class AdvertisementService {
   };
 
   updateAdvertisement = (advertisement: IAdvertisement, id: string) => {
-    const existingAdvertisement = this.advertisements
-      .find((advert) => advert.id === id);
-
-    if (!existingAdvertisement) {
-      return false;
-    }
-
     const updatedAdvertisement: {
       name?: string;
       description?: string;
