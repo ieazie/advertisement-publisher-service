@@ -10,14 +10,16 @@ class Advertisement implements IAdvertisement {
     type: Array<IType>;
     channel: Array<IChannel>;
 
-    constructor(id: string,
-                name: string,
-                description: string,
-                startDate: string,
-                endDate: string,
-                isActive: boolean,
-                type: Array<IType>,
-                channel: Array<IChannel>
+    constructor({id, name, description, startDate, endDate, isActive, type, channel}: {
+                    id: string,
+                    name: string,
+                    description: string,
+                    startDate: string,
+                    endDate: string,
+                    isActive: boolean,
+                    type: Array<IType>,
+                    channel: Array<IChannel>
+                }
     ) {
         this.id = id;
         this.name = name;
