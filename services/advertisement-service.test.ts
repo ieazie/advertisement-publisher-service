@@ -12,7 +12,7 @@ Deno.test('the method "fetchAdvertisements"', () => {
 
 Deno.test('the method "fetchAdvertisement"', () => {
   const adId = "1";
-  const result = makeAdvertisementData().filter((
+  const result = makeAdvertisementData().find((
     advertisements: { id: string },
   ) => advertisements.id === adId);
   expect(AdvertisementService.fetchAdvertisement(adId)).toEqual(result);
@@ -30,9 +30,7 @@ Deno.test('the method "updateAdvertisement"', () => {
     id: "1",
     name: "Apple iPhone 10",
   };
-  expect(AdvertisementService.updateAdvertisement(data, data.id)).toEqual(
-      AdvertisementService.advertisements,
-  );
+  expect(AdvertisementService.updateAdvertisement(data, data.id)).toBe(true);
 });
 
 Deno.test('the method "publishAdvertisement"', () => {
