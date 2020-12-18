@@ -53,7 +53,7 @@ Deno.test('the method "publishAdvertisement"', () => {
   expect(startDateGreaterThanEndDate).toThrow(
     "Start date must be greater than end date",
   );
-  
+
 });
 
 const makeAdvertisementData = () => readJSON("./data/advertisements.json");
