@@ -22,7 +22,7 @@ deno  run --allow-read  --allow-net --allow-env --unstable server.ts
 ```
 
 ## Running tests
-In the project i have included a small test for the Advertisement Service class, run the tess with:
+In the project i have included a small test for the Advertisement Service class, run the test with:
 
 ```shell
 deno  run --allow-read  --allow-net --allow-env --unstable server.ts
